@@ -1,0 +1,14 @@
+{
+  "app.title": "Domain counter",
+  "app.form.pin": "Pin",
+  "app.form.unlock": "Unlock",
+  "app.form.select_search_engine": "Select search engines",
+  "app.form.yandex": "Yandex",
+  "app.form.google": "Google",
+  "app.form.type_words": "Enter words manually",
+  "app.form.words_for_processing": "Words for processing",
+  "app.form.use_file": "Use input file",
+  "app.form.input_file": "Input file",
+  "app.form.loading_caption": "Please, wait for some time until the file will be loaded...",
+  "app.form.start_processing": "Start processing"
+}
