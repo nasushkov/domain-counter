@@ -1,5 +1,5 @@
 {
-  "app.title": "Domain counter",
+  "app.form.title": "Domain counter",
   "app.form.pin": "Pin для доступа к сервису",
   "app.form.unlock": "Активировать",
   "app.form.select_search_engine": "Выберите поисковые движки",

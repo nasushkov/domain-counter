@@ -1,5 +1,5 @@
 {
-  "app.title": "Domain counter",
+  "app.form.title": "Domain counter",
   "app.form.pin": "Pin",
   "app.form.unlock": "Unlock",
   "app.form.select_search_engine": "Select search engines",

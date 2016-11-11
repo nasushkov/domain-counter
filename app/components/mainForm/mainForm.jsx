@@ -8,7 +8,7 @@ import CSSModules from 'react-css-modules'
 import styles from './mainForm.module.css'
 import BasicInput from '../fields/basicInput.jsx'
 import TextArea from '../fields/textArea.jsx'
-import {submitMainForm} from '../../actions/submitFormActions'
+import {submitMainForm, unlockMainForm} from '../../actions/submitFormActions'
 import locHelper from '../../helpers/locHelper'
 
 const mapProps = {
@@ -20,10 +20,12 @@ const modelPath = 'formState.mainForm'
 
 export const MainForm = setPropTypes({
     intl: intlShape.isRequired,
+    handleUnlock: React.PropTypes.func.isRequired,
     handleSubmit: React.PropTypes.func.isRequired
 })(CSSModules(props => {
     const {
         formState,
+        handleUnlock,
         handleSubmit,
         intl: {
             messages
@@ -35,11 +37,15 @@ export const MainForm = setPropTypes({
     return (
         <Form model={modelPath} className="container" onSubmit={handleSubmit}>
             <fieldset styleName="fields">
-                <legend styleName="title"></legend>
+                <legend styleName="title">{getLoc('title')}</legend>
                 <div class="row">
-                    <Control type="text" model=".pin" placeholder="Pin" messages={messages}
-                             mapProps={mapProps}
-                             component={BasicInput}/>
+                    <div styleName="col">
+                        <Control type="text" model=".pin" placeholder="Pin" messages={messages} mapProps={mapProps}
+                                 component={BasicInput}/>
+                    </div>
+                    <div className="col">
+                        <button className="btn waves-effect waves-light" title={getLoc('unlock')} onClick={handleUnlock} type="button">{getLoc('unlock')}</button>
+                    </div>
                 </div>
             </fieldset>
         </Form>
@@ -50,5 +56,6 @@ export default injectIntl(connect((state, ownProps) => ({
     formState: getModel(state, formPath),
     intl: ownProps.intl
 }), (dispatch) => ({
+    handleUnlock: (pin) => dispatch(unlockMainForm(pin)),
     handleSubmit: data => dispatch(submitMainForm(data))
 }))(MainForm))
