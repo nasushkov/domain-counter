@@ -7,3 +7,15 @@
     font-size: x-large;
     text-align: center;
 }
+
+.col {
+    box-sizing: border-box;
+    padding: 0 1rem 0 0.75rem;
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 710px) {
+    .col {
+        width: 100%
+    }
+}

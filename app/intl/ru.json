@@ -8,6 +8,7 @@
   "app.form.type_words": "Ввод слов вручную",
   "app.form.words_for_processing": "Введите ключевые слова",
   "app.form.use_file": "Использовать файл",
+  "app.form.file": "Файл",
   "app.form.input_file": "Файл с ключевыми словами",
   "app.form.loading_caption": "Пожалуйста, подождите некоторое время пока файл будет загружен...",
   "app.form.start_processing": "Запустить обработку"

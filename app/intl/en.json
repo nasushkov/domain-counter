@@ -8,6 +8,7 @@
   "app.form.type_words": "Enter words manually",
   "app.form.words_for_processing": "Words for processing",
   "app.form.use_file": "Use input file",
+  "app.form.file": "File",
   "app.form.input_file": "Input file",
   "app.form.loading_caption": "Please, wait for some time until the file will be loaded...",
   "app.form.start_processing": "Start processing"
