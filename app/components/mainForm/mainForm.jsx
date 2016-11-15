@@ -40,30 +40,38 @@ export const MainForm = setPropTypes({
                 <legend styleName="title">{getLoc('title')}</legend>
                 <div styleName="row">
                     <div styleName="col">
-                        <Control type="text" model=".pin" placeholder={getLoc('pin')} messages={messages} mapProps={mapProps}
+                        <Control type="text" model=".pin" placeholder={getLoc('pin')} messages={messages}
+                                 mapProps={mapProps}
                                  component={BasicInput}/>
                     </div>
                     <div styleName="col">
-                        <button className="btn waves-effect waves-light" title={getLoc('unlock')} onClick={handleUnlock}
+                        <button className="btn waves-effect waves-light" styleName="unlock-button" title={getLoc('unlock')} onClick={handleUnlock}
                                 type="button">{getLoc('unlock')}</button>
                     </div>
                 </div>
-                <div styleName="row">
-                    <div styleName="col">
-                        <Control type="checkbox" model=".google" placeholder={getLoc('google')} messages={messages} mapProps={mapProps} component={BasicInput}/>
+                <fieldset styleName="select-engine">
+                    <legend>{getLoc('select_search_engine')}</legend>
+                    <div styleName="row">
+
+                        <div styleName="col">
+                            <Control type="checkbox" model=".google" placeholder={getLoc('google')} messages={messages}
+                                     mapProps={mapProps} component={BasicInput}/>
+                        </div>
+                        <div styleName="col">
+                            <Control type="checkbox" model=".yandex" placeholder={getLoc('yandex')} messages={messages}
+                                     mapProps={mapProps} component={BasicInput}/>
+                        </div>
                     </div>
-                    <div styleName="col">
-                        <Control type="checkbox" model=".yandex" placeholder={getLoc('yandex')} messages={messages} mapProps={mapProps} component={BasicInput}/>
-                    </div>
-                </div>
+                </fieldset>
                 <div styleName="row">
                     <div styleName="col">
                         <p>
                             <input name="wordInput" type="radio" id="wordInput"/>
                             <label htmlFor="wordInput">{getLoc('type_words')}</label>
                         </p>
-                        <Control model=".manualWords" messages={messages} placeholder={getLoc('words_for_processing')} mapProps={mapProps}
-                          component={TextArea}/>
+                        <Control model=".manualWords" messages={messages} placeholder={getLoc('words_for_processing')}
+                                 mapProps={mapProps}
+                                 component={TextArea}/>
                     </div>
                     <div styleName="col">
                         <p>
