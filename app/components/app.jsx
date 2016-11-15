@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import MainForm from './mainForm/mainForm'
 
 const bootstrap4Metas = [
     {charset: 'utf-8'},
@@ -23,6 +24,6 @@ export default (() => (
                 ]}
         >
         </Helmet>
-        Hey yo!
+        <MainForm/>
     </div>
 ))

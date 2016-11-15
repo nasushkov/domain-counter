@@ -8,6 +8,11 @@
     text-align: center;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
 .col {
     box-sizing: border-box;
     padding: 0 1rem 0 0.75rem;

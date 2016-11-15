@@ -1,7 +1,6 @@
 import koa from 'koa'
 import compress from 'koa-compress'
 import logger from 'koa-logger'
-import favicon from 'koa-favicon'
 import serve from 'koa-static'
 
 import handleError from './middleware/handleError'
