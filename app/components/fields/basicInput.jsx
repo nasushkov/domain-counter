@@ -1,4 +1,4 @@
-import React, {Component} from 'React'
+import React, {Component} from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import {setPropTypes, pure} from 'recompose'
