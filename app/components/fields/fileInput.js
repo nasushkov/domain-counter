@@ -5,6 +5,14 @@ import {setPropTypes, pure} from 'recompose'
 
 import getTruthyProps from '../../helpers/truthyProps'
 
+const filePathStyle = {
+    position: 'relative'
+}
+
+const labelStyle = {
+    left: '10px'
+}
+
 export default pure(setPropTypes({
     innerState: React.PropTypes.object.isRequired
 })((props) => {
@@ -27,14 +35,14 @@ export default pure(setPropTypes({
 
     return (
         <div className="file-field input-field">
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>File</span>
+            <div className="file-field input-field">
+                <div className="btn">
+                    <span>{props.buttonText}</span>
                     <input type="file" />
                 </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" />
-                    <label htmlFor={props.id} className={labelClassName} data-error={errors}>{props.placeholder}</label>
+                <div className="file-path-wrapper" style={filePathStyle}>
+                    <input className="file-path validate" type="text" />
+                    <label htmlFor={props.id} className={labelClassName} style={labelStyle} data-error={errors}>{props.placeholder}</label>
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@ import CSSModules from 'react-css-modules'
 import styles from './mainForm.module.css'
 import BasicInput from '../fields/basicInput.jsx'
 import TextArea from '../fields/textArea.jsx'
+import FileInput from '../fields/fileInput'
 import {submitMainForm, unlockMainForm} from '../../actions/submitFormActions'
 import locHelper from '../../helpers/locHelper'
 
@@ -78,6 +79,9 @@ export const MainForm = setPropTypes({
                             <input name="wordInput" type="radio" id="fileInput"/>
                             <label htmlFor="wordInput">{getLoc('use_file')}</label>
                         </p>
+                        <Control model=".fileWords" messages={messages} placeholder={getLoc('input_file')}
+                                 mapProps={mapProps} buttonText={getLoc('file')}
+                                 component={FileInput}/>
                     </div>
                 </div>
                 <div styleName="last-row">
