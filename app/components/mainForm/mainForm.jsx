@@ -46,14 +46,14 @@ export const MainForm = setPropTypes({
                                  component={BasicInput}/>
                     </div>
                     <div styleName="col">
-                        <button className="btn waves-effect waves-light" styleName="unlock-button" title={getLoc('unlock')} onClick={handleUnlock}
+                        <button className="btn waves-effect waves-light" styleName="unlock-button"
+                                title={getLoc('unlock')} onClick={handleUnlock}
                                 type="button">{getLoc('unlock')}</button>
                     </div>
                 </div>
                 <fieldset styleName="select-engine">
                     <legend>{getLoc('select_search_engine')}</legend>
                     <div styleName="row">
-
                         <div styleName="col">
                             <Control type="checkbox" model=".google" placeholder={getLoc('google')} messages={messages}
                                      mapProps={mapProps} component={BasicInput}/>
@@ -66,26 +66,25 @@ export const MainForm = setPropTypes({
                 </fieldset>
                 <div styleName="row">
                     <div styleName="col">
-                        <p>
-                            <input name="wordInput" type="radio" id="wordInput"/>
-                            <label htmlFor="wordInput">{getLoc('type_words')}</label>
-                        </p>
+                        <Control type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('type_words')}
+                                 messages={messages}
+                                 mapProps={mapProps} component={BasicInput}/>
                         <Control model=".manualWords" messages={messages} placeholder={getLoc('words_for_processing')}
                                  mapProps={mapProps}
                                  component={TextArea}/>
                     </div>
                     <div styleName="col">
-                        <p>
-                            <input name="wordInput" type="radio" id="fileInput"/>
-                            <label htmlFor="wordInput">{getLoc('use_file')}</label>
-                        </p>
+                        <Control type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('use_file')}
+                                 messages={messages}
+                                 mapProps={mapProps} component={BasicInput}/>
                         <Control model=".fileWords" messages={messages} placeholder={getLoc('input_file')}
                                  mapProps={mapProps} buttonText={getLoc('file')}
                                  component={FileInput}/>
                     </div>
                 </div>
                 <div styleName="last-row">
-                    <button className="btn-large waves-effect waves-light" type="submit" name="startProcessing">{getLoc('start_processing')}
+                    <button className="btn-large waves-effect waves-light" type="submit"
+                            name="startProcessing">{getLoc('start_processing')}
                     </button>
                 </div>
             </fieldset>
