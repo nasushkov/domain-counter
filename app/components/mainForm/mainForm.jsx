@@ -80,6 +80,10 @@ export const MainForm = setPropTypes({
                         </p>
                     </div>
                 </div>
+                <div styleName="last-row">
+                    <button className="btn-large waves-effect waves-light" type="submit" name="startProcessing">{getLoc('start_processing')}
+                    </button>
+                </div>
             </fieldset>
         </Form>
     )

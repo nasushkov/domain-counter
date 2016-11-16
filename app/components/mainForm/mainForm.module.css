@@ -17,6 +17,11 @@
     flex-direction: row;
 }
 
+.last-row {
+    composes: row;
+    justify-content: center;
+}
+
 .col {
     box-sizing: border-box;
     padding: 0 1rem 0 0.75rem;
