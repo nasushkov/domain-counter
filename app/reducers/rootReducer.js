@@ -7,7 +7,8 @@ export default combineReducers({
     formState: combineForms({
         mainForm: {
             google: true,
-            yandex: true
+            yandex: true,
+            wordInput: 'manual'
         }
     }, 'formState')
 })

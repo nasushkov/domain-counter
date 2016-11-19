@@ -8,8 +8,7 @@ import CSSModules from 'react-css-modules'
 import styles from './mainForm.module.css'
 import TextInput from '../fields/textInput.jsx'
 import TextArea from '../fields/textArea.jsx'
-import CheckboxInput from '../fields/checkboxInput'
-import RadioInput from '../fields/radioInput.jsx'
+import CheckedInput from '../fields/checkedInput.jsx'
 import FileInput from '../fields/fileInput'
 import {submitMainForm, unlockMainForm} from '../../actions/submitFormActions'
 import locHelper from '../../helpers/locHelper'
@@ -57,20 +56,20 @@ export const MainForm = setPropTypes({
                     <div styleName="row">
                         <div styleName="col">
                             <Control.checkbox type="checkbox" model=".google" placeholder={getLoc('google')} messages={messages}
-                                     component={CheckboxInput}/>
+                                     component={CheckedInput}/>
                         </div>
                         <div styleName="col">
                             <Control.checkbox type="checkbox" model=".yandex" placeholder={getLoc('yandex')} messages={messages}
-                                     component={CheckboxInput}/>
+                                     component={CheckedInput}/>
                         </div>
                     </div>
                 </fieldset>
                 <div styleName="row">
                     <div styleName="col">
-                        <Control.radio type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('type_words')} component={RadioInput}/>
+                        <Control.radio type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('type_words')} value="manual" component={CheckedInput}/>
                     </div>
                     <div styleName="col">
-                        <Control.radio type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('use_file')} component={RadioInput}/>
+                        <Control.radio type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('use_file')} value="file" component={CheckedInput}/>
                     </div>
                 </div>
                 <div styleName="input-row">
