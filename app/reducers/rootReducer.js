@@ -5,9 +5,9 @@ import { combineForms } from 'react-redux-form'
 export default combineReducers({
     routing: routerReducer,
     formState: combineForms({
-       pin: '',
-       google: true,
-       yandex: true,
-        
+        mainForm: {
+            google: true,
+            yandex: true
+        }
     }, 'formState')
 })

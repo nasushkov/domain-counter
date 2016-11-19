@@ -31,19 +31,18 @@ export default pure(setPropTypes({
         'active': focus || props.innerState.value || errors.length
     })
 
-    const inputProps = _.omit(props, ['placeholder', 'innerState', 'className', 'messages'])
+    const inputProps = _.omit(props, ['placeholder', 'innerState', 'className', 'messages', 'buttonText'])
 
     return (
         <div className="file-field input-field">
-            <div className="file-field input-field">
-                <div className="btn">
-                    <span>{props.buttonText}</span>
-                    <input type="file" />
-                </div>
-                <div className="file-path-wrapper" style={filePathStyle}>
-                    <input className="file-path validate" type="text" />
-                    <label htmlFor={props.id} className={labelClassName} style={labelStyle} data-error={errors}>{props.placeholder}</label>
-                </div>
+            <div className="btn">
+                <span>{props.buttonText}</span>
+                <input type="file"/>
+            </div>
+            <div className="file-path-wrapper" style={filePathStyle}>
+                <input {...inputProps} className="file-path validate" type="text"/>
+                <label htmlFor={props.id} className={labelClassName} style={labelStyle}
+                       data-error={errors}>{props.placeholder}</label>
             </div>
         </div>
     );

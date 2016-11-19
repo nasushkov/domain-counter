@@ -6,8 +6,10 @@ import {injectIntl, intlShape} from 'react-intl'
 import CSSModules from 'react-css-modules'
 
 import styles from './mainForm.module.css'
-import BasicInput from '../fields/basicInput.jsx'
+import TextInput from '../fields/textInput.jsx'
 import TextArea from '../fields/textArea.jsx'
+import CheckboxInput from '../fields/checkboxInput'
+import RadioInput from '../fields/radioInput.jsx'
 import FileInput from '../fields/fileInput'
 import {submitMainForm, unlockMainForm} from '../../actions/submitFormActions'
 import locHelper from '../../helpers/locHelper'
@@ -24,8 +26,7 @@ export const MainForm = setPropTypes({
     handleUnlock: React.PropTypes.func.isRequired,
     handleSubmit: React.PropTypes.func.isRequired
 })(CSSModules(props => {
-    const {
-        formState,
+    const {        
         handleUnlock,
         handleSubmit,
         intl: {
@@ -41,9 +42,9 @@ export const MainForm = setPropTypes({
                 <legend styleName="title">{getLoc('title')}</legend>
                 <div styleName="row">
                     <div styleName="col">
-                        <Control type="text" model=".pin" placeholder={getLoc('pin')} messages={messages}
+                        <Control.text type="text" model=".pin" placeholder={getLoc('pin')} messages={messages}
                                  mapProps={mapProps}
-                                 component={BasicInput}/>
+                                 component={TextInput}/>
                     </div>
                     <div styleName="col">
                         <button className="btn waves-effect waves-light" styleName="unlock-button"
@@ -55,31 +56,33 @@ export const MainForm = setPropTypes({
                     <legend>{getLoc('select_search_engine')}</legend>
                     <div styleName="row">
                         <div styleName="col">
-                            <Control type="checkbox" model=".google" placeholder={getLoc('google')} messages={messages}
-                                     mapProps={mapProps} component={BasicInput}/>
+                            <Control.checkbox type="checkbox" model=".google" placeholder={getLoc('google')} messages={messages}
+                                     component={CheckboxInput}/>
                         </div>
                         <div styleName="col">
-                            <Control type="checkbox" model=".yandex" placeholder={getLoc('yandex')} messages={messages}
-                                     mapProps={mapProps} component={BasicInput}/>
+                            <Control.checkbox type="checkbox" model=".yandex" placeholder={getLoc('yandex')} messages={messages}
+                                     component={CheckboxInput}/>
                         </div>
                     </div>
                 </fieldset>
                 <div styleName="row">
                     <div styleName="col">
-                        <Control type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('type_words')}
-                                 messages={messages}
-                                 mapProps={mapProps} component={BasicInput}/>
-                        <Control model=".manualWords" messages={messages} placeholder={getLoc('words_for_processing')}
-                                 mapProps={mapProps}
-                                 component={TextArea}/>
+                        <Control.radio type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('type_words')} component={RadioInput}/>
                     </div>
                     <div styleName="col">
-                        <Control type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('use_file')}
-                                 messages={messages}
-                                 mapProps={mapProps} component={BasicInput}/>
-                        <Control model=".fileWords" messages={messages} placeholder={getLoc('input_file')}
-                                 mapProps={mapProps} buttonText={getLoc('file')}
-                                 component={FileInput}/>
+                        <Control.radio type="radio" name="wordInput" model=".wordInput" placeholder={getLoc('use_file')} component={RadioInput}/>
+                    </div>
+                </div>
+                <div styleName="input-row">
+                    <div styleName="col">
+                        <Control.text model=".manualWords" messages={messages} placeholder={getLoc('words_for_processing')}
+                                      mapProps={mapProps}
+                                      component={TextArea}/>
+                    </div>
+                    <div styleName="file-col">
+                        <Control.file model=".fileWords" messages={messages} placeholder={getLoc('input_file')}
+                                      mapProps={mapProps} buttonText={getLoc('file')}
+                                      component={FileInput}/>
                     </div>
                 </div>
                 <div styleName="last-row">

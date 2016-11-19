@@ -17,6 +17,11 @@
     flex-direction: row;
 }
 
+.input-row {
+    composes: row;
+    margin-top: 2rem;
+}
+
 .last-row {
     composes: row;
     justify-content: center;
@@ -33,6 +38,11 @@
     .col {
         width: 100%
     }
+}
+
+.file-col {
+    composes: col;
+    margin-top: 2.2rem;
 }
 
 .unlock-button {
