@@ -37,7 +37,7 @@ export default pure(setPropTypes({
         <div className="file-field input-field">
             <div className="btn">
                 <span>{props.buttonText}</span>
-                <input type="file"/>
+                <input disabled={props.disabled} type="file"/>
             </div>
             <div className="file-path-wrapper" style={filePathStyle}>
                 <input {...inputProps} className="file-path validate" type="text"/>

@@ -25,7 +25,8 @@ export const MainForm = setPropTypes({
     handleUnlock: React.PropTypes.func.isRequired,
     handleSubmit: React.PropTypes.func.isRequired
 })(CSSModules(props => {
-    const {        
+    const {
+        formState,
         handleUnlock,
         handleSubmit,
         intl: {
@@ -34,6 +35,7 @@ export const MainForm = setPropTypes({
     } = props
 
     const getLoc = locHelper(messages, 'app.form.')
+    const wordInputVal = formState.value.mainForm.wordInput
 
     return (
         <Form model={modelPath} className="container" onSubmit={handleSubmit}>
@@ -75,12 +77,12 @@ export const MainForm = setPropTypes({
                 <div styleName="input-row">
                     <div styleName="col">
                         <Control.text model=".manualWords" messages={messages} placeholder={getLoc('words_for_processing')}
-                                      mapProps={mapProps}
+                                      mapProps={mapProps} disabled={wordInputVal === 'manual' ? '' : 'disabled'}
                                       component={TextArea}/>
                     </div>
                     <div styleName="file-col">
                         <Control.file model=".fileWords" messages={messages} placeholder={getLoc('input_file')}
-                                      mapProps={mapProps} buttonText={getLoc('file')}
+                                      mapProps={mapProps} buttonText={getLoc('file')} disabled={wordInputVal === 'file' ? '' : 'disabled'}
                                       component={FileInput}/>
                     </div>
                 </div>
