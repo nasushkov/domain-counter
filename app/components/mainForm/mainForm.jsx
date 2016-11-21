@@ -26,7 +26,7 @@ export const MainForm = setPropTypes({
     handleSubmit: React.PropTypes.func.isRequired
 })(CSSModules(props => {
     const {
-        formState,
+        modelState,
         handleUnlock,
         handleSubmit,
         intl: {
@@ -35,7 +35,7 @@ export const MainForm = setPropTypes({
     } = props
 
     const getLoc = locHelper(messages, 'app.form.')
-    const wordInputVal = formState.value.mainForm.wordInput
+    const wordInputVal = modelState.wordInput
 
     return (
         <Form model={modelPath} className="container" onSubmit={handleSubmit}>
@@ -77,12 +77,12 @@ export const MainForm = setPropTypes({
                 <div styleName="input-row">
                     <div styleName="col">
                         <Control.text model=".manualWords" messages={messages} placeholder={getLoc('words_for_processing')}
-                                      mapProps={mapProps} disabled={wordInputVal === 'manual' ? '' : 'disabled'}
+                                      mapProps={mapProps} disabled={wordInputVal !== 'manual'}
                                       component={TextArea}/>
                     </div>
                     <div styleName="file-col">
                         <Control.file model=".fileWords" messages={messages} placeholder={getLoc('input_file')}
-                                      mapProps={mapProps} buttonText={getLoc('file')} disabled={wordInputVal === 'file' ? '' : 'disabled'}
+                                      mapProps={mapProps} buttonText={getLoc('file')} disabled={wordInputVal !== 'file'}
                                       component={FileInput}/>
                     </div>
                 </div>
@@ -98,6 +98,7 @@ export const MainForm = setPropTypes({
 
 export default injectIntl(connect((state, ownProps) => ({
     formState: getModel(state, formPath),
+    modelState: getModel(state, modelPath),
     intl: ownProps.intl
 }), (dispatch) => ({
     handleUnlock: (pin) => dispatch(unlockMainForm(pin)),

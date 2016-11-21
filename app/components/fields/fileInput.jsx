@@ -3,46 +3,35 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import {setPropTypes, pure} from 'recompose'
 
-import getTruthyProps from '../../helpers/truthyProps'
-
-const filePathStyle = {
-    position: 'relative'
-}
-
-const labelStyle = {
-    left: '10px'
-}
-
 export default pure(setPropTypes({
     innerState: React.PropTypes.object.isRequired
 })((props) => {
-    const errors = props.innerState.touched
-        ? Array.from(getTruthyProps(props.innerState.errors || {})).map(val => props.messages[val[1]]).join(', ')
-        : ''
+    const inputValue =  (props.innerState.value && props.innerState.value.length)
+        ? props.innerState.value.reduce((prevVal, curVal) => prevVal.concat(curVal, ', '), [])
+        : []
 
-    const focus = props.innerState.focus
+    if(inputValue.length) {
+        inputValue.pop()
+    }
 
-    const textInputClassName = classNames('validate', {
-        'invalid': errors.length,
-        [props.textClassName]: props.textClassName
+    const btnClassName = classNames('btn', {
+        'disabled': props.disabled
     })
 
-    const labelClassName = classNames({
-        'active': focus || props.innerState.value || errors.length
+    const textInputClassName = classNames('file-path', 'validate', {
+        [props.textClassName]: props.textClassName
     })
 
     const inputProps = _.omit(props, ['placeholder', 'innerState', 'className', 'messages', 'buttonText'])
 
     return (
         <div className="file-field input-field">
-            <div className="btn">
+            <div className={btnClassName}>
                 <span>{props.buttonText}</span>
-                <input disabled={props.disabled} type="file"/>
+                <input {...inputProps} type="file"/>
             </div>
-            <div className="file-path-wrapper" style={filePathStyle}>
-                <input {...inputProps} className="file-path validate" type="text"/>
-                <label htmlFor={props.id} className={labelClassName} style={labelStyle}
-                       data-error={errors}>{props.placeholder}</label>
+            <div className="file-path-wrapper">
+                <input disabled={props.disabled} className={textInputClassName} type="text" placeholder={props.placeholder}/>
             </div>
         </div>
     );
