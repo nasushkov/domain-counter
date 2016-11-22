@@ -30,5 +30,5 @@ export default pure(setPropTypes({
             <textarea {...inputProps} className={inputClassName}/>
             <label htmlFor={props.id} className={labelClassName} data-error={errors}>{props.placeholder}</label>
         </div>
-    );
+    )
 }))
