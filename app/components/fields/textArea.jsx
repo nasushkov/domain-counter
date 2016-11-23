@@ -1,15 +1,12 @@
 import React, {Component} from 'react'
 import classNames from 'classnames'
-import _ from 'lodash'
-import {setPropTypes, pure} from 'recompose'
 
 import getTruthyProps from '../../helpers/truthyProps'
+import omit from '../../helpers/omit'
 
-export default pure(setPropTypes({
-    innerState: React.PropTypes.object.isRequired    
-})((props) => {
+const TextArea = (props) => {
     const errors = props.innerState.touched
-        ? Array.from(getTruthyProps(props.innerState.errors || {})).map(val => props.messages[val[1]]).join(', ')
+        ? getTruthyProps(props.innerState.errors || {}).map(val => props.messages[val[1]]).join(', ')
         : ''
 
     const focus = props.innerState.focus
@@ -23,7 +20,7 @@ export default pure(setPropTypes({
         'active': focus || props.innerState.value || errors.length
     })
 
-    const inputProps = _.omit(props, ['placeholder', 'innerState', 'className', 'messages'])
+    const inputProps = omit(props, ['placeholder', 'innerState', 'className', 'messages'])
 
     return (
         <div className="input-field">
@@ -31,4 +28,10 @@ export default pure(setPropTypes({
             <label htmlFor={props.id} className={labelClassName} data-error={errors}>{props.placeholder}</label>
         </div>
     )
-}))
+}
+
+TextArea.propTypes = {
+    innerState: React.PropTypes.object.isRequired
+}
+
+export default TextArea

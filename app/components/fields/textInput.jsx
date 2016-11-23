@@ -1,20 +1,15 @@
 import React, {Component} from 'react'
 import classNames from 'classnames'
-import _ from 'lodash'
-import {setPropTypes, pure} from 'recompose'
 
 import getTruthyProps from '../../helpers/truthyProps'
-import iconFactory from '../iconFactory'
+import omit from '../../helpers/omit'
 
 const ACTIVE_COLOR = '#26a69a'
 const DEFAULT_COLOR = 'black'
 
-export default pure(setPropTypes({
-    innerState: React.PropTypes.object.isRequired,
-    iconPrefix: React.PropTypes.string
-})((props) => {
+const TextInput = (props) => {
     const errors = props.innerState.touched
-        ? Array.from(getTruthyProps(props.innerState.errors || {})).map(val => props.messages[val[1]]).join(', ')
+        ? getTruthyProps(props.innerState.errors || {}).map(val => props.messages[val[1]]).join(', ')
         : ''
 
     const focus = props.innerState.focus
@@ -30,14 +25,14 @@ export default pure(setPropTypes({
         'active': focus || props.innerState.value || errors.length
     })
 
-    const inputProps = _.omit(props, ['placeholder', 'innerState', 'iconPrefix', 'className', 'messages'])
+    const inputProps = omit(props, ['placeholder', 'innerState', 'iconPrefix', 'className', 'messages'])
 
     return (
         <div className="input-field">
             {
                 (() => {
                     if(props.iconPrefix){
-                        const PrefixIcon = iconFactory(props.iconPrefix)
+                        const PrefixIcon = props.iconFactory(props.iconPrefix)
                         return <PrefixIcon className="prefix" color={iconColor}/>
                     }
                 })()
@@ -46,4 +41,12 @@ export default pure(setPropTypes({
             <label htmlFor={props.id} className={labelClassName} data-error={errors}>{props.placeholder}</label>
         </div>
     )
-}))
+}
+
+TextInput.propTypes = {
+    innerState: React.PropTypes.object.isRequired,
+    iconPrefix: React.PropTypes.string,
+    iconFactory: React.PropTypes.func
+}
+
+export default TextInput
