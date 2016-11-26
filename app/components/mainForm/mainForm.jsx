@@ -1,21 +1,14 @@
 import React, {Component} from 'react'
 import {Control, Form, actions, getModel} from 'react-redux-form'
+import {TextInput, TextArea, CheckedInput, FileInput, mapProps} from 'react-redux-form-materialize'
 import {connect} from 'react-redux'
 import {compose, setPropTypes, withHandlers} from 'recompose'
 import {injectIntl, intlShape} from 'react-intl'
 import CSSModules from 'react-css-modules'
 
 import styles from './mainForm.module.css'
-import TextInput from '../fields/textInput.jsx'
-import TextArea from '../fields/textArea.jsx'
-import CheckedInput from '../fields/checkedInput.jsx'
-import FileInput from '../fields/fileInput'
 import {submitMainForm, unlockMainForm} from '../../actions/submitFormActions'
 import locHelper from '../../helpers/locHelper'
-
-const mapProps = {
-    innerState: (props) => props.fieldValue
-}
 
 const formPath = 'formState.forms.$form'
 const modelPath = 'formState.mainForm'
@@ -59,7 +52,7 @@ export const MainForm = setPropTypes({
                         <div styleName="col">
                             <Control.checkbox type="checkbox" model=".google" placeholder={getLoc('google')} messages={messages}
                                      component={CheckedInput}/>
-                        </div>
+                        </div>approvedfi
                         <div styleName="col">
                             <Control.checkbox type="checkbox" model=".yandex" placeholder={getLoc('yandex')} messages={messages}
                                      component={CheckedInput}/>
